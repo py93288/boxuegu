@@ -1,0 +1,10 @@
+require.config({
+    //baseUrl设置的路径就是大部分公共资源的文件路径
+    baseUrl:'/views/assets',
+    //如果要引用的模块是一个具名模块,那么path中别名的设置一定要和具名模块的名称保持一致
+    paths:{
+        jquery:'./jquery/jquery',
+        cookie:'./jquery-cookie/jquery.cookie',
+        template:'./artTemplate/template',
+    }
+})
