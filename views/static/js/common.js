@@ -1,7 +1,5 @@
 define(['jquery', 'template', 'cookie'], function ($, template) {
     $(function () {
-        console.log(1);
-
         if (location.pathname != 'dashboard/login') {
             //如果cookie中没有PHPSESSID,说明没有登陆过,跳转回登录页
             if (!$.cookie('PHPSESSID')) {
@@ -12,7 +10,19 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
             console.log(userinfo);
             $('#profile').html(template('profile-tpl', userinfo));
         }
+        //退出登录事件
+        $('#logout_btn').click(function () {
+            $.ajax({
+                type:"post",
+                url:"/api/logout",
+                success:function(data){
+                    if(data.code==200){
+                        location.href='/dashboard/login';
+                    }
+                }
+            })
 
+        })
     })
 })
 //判断用户是否登录了,如果没有登录,就跳回到登录页
